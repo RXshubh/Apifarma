@@ -1,4 +1,3 @@
-import requests
 import configparser
 from flask import Flask,request,jsonify #render_template,url_for
 #import json
