@@ -1,15 +1,12 @@
 import configparser
-from flask import Flask,request,jsonify #render_template,url_for
-#import json
+from flask import Flask,request,jsonify
 import pickle
 import numpy as np
 
 model=pickle.load(open('RandomForest.pkl','rb'))
 
 app=Flask(__name__)
-#@app.route('/')
-#def index():
-#    return render_template("htmld.html")
+
 @app.route('/predict',methods=['POST'])
 def predict():
     nitro=request.form.get('nitro')
@@ -30,9 +27,7 @@ def predict():
     result = model.predict(for_input)[0]
 
     return jsonify({'Recoo': str(result)})
-#@app.route('/hello')
-#def hello():
- #   return "<html><body><h1>Hello</h1></body></html>"
+
 
 
 if __name__=='__main__':
